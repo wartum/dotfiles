@@ -18,24 +18,21 @@ Plugin 'vim-airline/vim-airline'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" ____________________________ 
+" ____________________________
 "< Let's have some functions! >
-" ---------------------------- 
+" ----------------------------
 "        \   ^__^
 "         \  (oo)\_______
 "            (__)\       )\/\
 "                ||----w |
 "                ||     ||
 "
-let g:white_characters_switch = 1
 function! ToggleWhiteCharacters()
-   if (g:white_characters_switch)
+   if (&list)
     :set nolist
-    let g:white_characters_switch = 0
     echo "list off"
   else
     :set list
-    let g:white_characters_switch = 1
     echo "list on"
   endif
 endfunction
