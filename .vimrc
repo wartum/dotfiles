@@ -67,11 +67,13 @@ set tabstop=4 shiftwidth=4
 set expandtab shiftwidth=2 softtabstop=2
 
 
-" standard insert key bindings "
+" insert key bindings "
 inoremap jj <Esc>
 inoremap {{ {}<Left><CR><CR><Up><Tab>
+inoremap // /* <End> */<Left><Left><Left>
+inoremap <C-v> <C-r>+
 
-" standard normal key bindings "
+" normal key bindings "
 nnoremap <Space> :w<CR>
 nnoremap <C-j> :tabp<CR>
 nnoremap <C-k> :tabn<CR>
@@ -83,7 +85,14 @@ nnoremap <C-w>_ :ter<CR>
 nnoremap <C-w>? :vert ter<CR>
 nnoremap ZQ :q!<CR>
 nnoremap ZZ :wq<CR>
+nnoremap > <C-w>>
+nnoremap < <C-w><
+
+" visual key bindings "
+vnoremap <C-c> "+y
 
 " autocommands "
 autocmd BufWritePost .Xresources call system("xrdb ~/.Xresources")
 autocmd BufWritePost .xbindkeysrc call system("pkill xbindkeys; xbindkeys")
+autocmd BufWritePost picom.conf call system("systemctl --user restart compton")
+autocmd BufWritePost *.tex call system("pdflatex ".expand("%"))
