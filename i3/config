@@ -9,7 +9,7 @@ font pango: Noto Serif 11
 focus_follows_mouse no
 title_align center
 floating_modifier $mod
-hide_edge_borders smart
+hide_edge_borders none
 gaps inner 15
 
 # colors
