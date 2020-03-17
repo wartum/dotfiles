@@ -1,0 +1,14 @@
+#!/bin/sh
+case $BLOCK_BUTTON in
+  1) st newsboat > /dev/null;;
+esac
+
+while pgrep newsboat > /dev/null; do
+    sleep 1
+done
+
+newsboat -x reload
+full_text="$(newsboat -x print-unread | awk '{print $1}')"
+
+echo "$full_text";
+exit 0
