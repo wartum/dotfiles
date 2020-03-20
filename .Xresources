@@ -1,0 +1,7 @@
+urxvt.*.background: black
+urxvt.*.foreground: white
+urxvt.*.font: xft:Liberation Mono:pixelsize=15
+urxvt.*.scrollBar: False
+urxvt.*.transparent: True
+urxvt.*.shading: 15
+urxvt.*.blurRadius: 5x5

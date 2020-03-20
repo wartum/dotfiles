@@ -1,7 +1,7 @@
 # VARIABLES AND ATTRIBUTES  ======================================================#
 
 set $mod Mod1
-set $term /usr/local/bin/st
+set $term /usr/bin/urxvt
 
 workspace_layout default
 default_border pixel 2
@@ -65,7 +65,7 @@ for_window [class="Nm-connection-editor"] floating enable
 
 bindsym Caps_Lock --release exec pkill -RTMIN+11 i3blocks
 bindsym Num_Lock --release exec pkill -RTMIN+11 i3blocks
-bindsym $mod+Shift+r restart
+bindsym $mod + Shift + r restart
 
 bindsym $mod + d                        exec /usr/bin/dmenu_run
 bindsym $mod + a                        exec ~/Bin/emoji_picker.sh
@@ -78,24 +78,24 @@ bindsym $mod + y                        exec ~/Bin/yt_download_from_selection.sh
 bindsym $mod + Shift + x                exec ~/Bin/shutdown_menu.sh
 bindsym $mod + Shift + c                exec /usr/bin/i3lock -i Pictures/wallpapers/tiger1.png -t
 
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod + h focus left
+bindsym $mod + j focus down
+bindsym $mod + k focus up
+bindsym $mod + l focus right
+bindsym $mod + Shift + h move left
+bindsym $mod + Shift + j move down
+bindsym $mod + Shift + k move up
+bindsym $mod + Shift + l move right
 
-bindsym $mod+Shift+w kill
+bindsym $mod + Shift + w kill
 
-bindsym $mod+f fullscreen toggle
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-bindsym $mod+v split toggle
+bindsym $mod + f fullscreen toggle
+bindsym $mod + w layout tabbed
+bindsym $mod + e layout toggle split
+bindsym $mod + v split toggle
 
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
+bindsym $mod + Shift + space floating toggle
+bindsym $mod + space focus mode_toggle
 bindsym --release button2 kill
 
 # WORKSPACES =====================================================================#
