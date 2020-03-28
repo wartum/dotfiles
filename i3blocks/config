@@ -5,7 +5,7 @@ align=left
 
 [rss_feeds]
 label= 
-interval=once
+interval=5
 signal=12
 
 [volume]
@@ -30,20 +30,16 @@ interval=10
 min_width=CPU: 1.00%
 
 [temperature]
-label=🔥 
+label= 
 interval=5
 
 [iface]
-label=🌍 
+label= 
 interval=10
 
 [time]
 label=📆 
 interval=1
-
-[coronavirus]
-label=PL:
-interval=600
 
 [battery]
 instance=0
@@ -58,8 +54,3 @@ instance=CAPS
 interval=once
 signal=11
 separator=false
-
-[keyindicator]
-instance=NUM
-interval=once
-signal=11

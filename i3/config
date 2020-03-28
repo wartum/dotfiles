@@ -9,12 +9,11 @@ font pango: Noto Serif 11
 focus_follows_mouse no
 title_align center
 floating_modifier $mod
-hide_edge_borders none
-gaps inner 15
+hide_edge_borders smart
 
 # colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #8700af #00005f #af00ff #aa00aa   #aaaaaa
+client.focused          #8700af #00005f #af00ff #aaaaaa   #882288
 client.focused_inactive #333333 #221122 #ffffff #000000   #000000
 client.unfocused        #333333 #000000 #888888 #000000   #000000
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
@@ -60,6 +59,7 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Matplotlib"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
+for_window [class="Gtk-intro"] floating enable
 
 # KEY BINDINGS  #=================================================================#
 
@@ -142,4 +142,3 @@ exec nm-applet
 exec dropbox
 exec blueman-applet
 exec systemctl --user start org.freedesktop.Notifications
-exec systemctl --user start compton

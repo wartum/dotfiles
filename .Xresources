@@ -5,6 +5,6 @@ urxvt.*.foreground: white
 urxvt.*.font: xft:Liberation Mono:pixelsize=15
 urxvt.*.scrollBar: False
 urxvt.*.transparent: True
-urxvt.*.shading: 10
+urxvt.*.shading: 20
 urxvt.*.blurRadius: 5x5
 urxvt.perl-ext-common: resize-font
