@@ -142,3 +142,4 @@ exec nm-applet
 exec dropbox
 exec blueman-applet
 exec systemctl --user start org.freedesktop.Notifications
+exec systemctl --user start newsboat-reloader
