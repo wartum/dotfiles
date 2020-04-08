@@ -18,5 +18,4 @@ alias tvnbis='firefox https://tvonline.vectra.pl/home?channel=tvn24-bis-hd&'
 alias tvn24='firefox https://tvonline.vectra.pl/home?channel=tvn-24-hd&'
 
 [ $TERM = linux ] && setfont /usr/share/kbd/consolefonts/eurlatgr.psfu.gz
-PS1='\H*\w: '
-neofetch
+pgrep Xorg > /dev/null && PS1='  ' || PS1='> '

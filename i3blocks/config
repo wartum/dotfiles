@@ -49,6 +49,11 @@ separator=false
 instance=1
 interval=1
 
+[packages]
+label= 
+command=pacman -Q | wc -l
+interval=25
+
 [keyindicator]
 instance=CAPS
 interval=once

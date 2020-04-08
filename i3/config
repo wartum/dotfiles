@@ -1,7 +1,7 @@
 # VARIABLES AND ATTRIBUTES  ======================================================#
 
 set $mod Mod1
-set $term /usr/bin/urxvt
+set $term /usr/bin/alacritty
 
 workspace_layout default
 default_border pixel 2
@@ -35,7 +35,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    font pango: Monospace Bold 11
+    font pango: JetBrains Mono Bold 11
     strip_workspace_numbers yes
     position top
     status_command i3blocks
@@ -97,6 +97,11 @@ bindsym $mod + v split toggle
 bindsym $mod + Shift + space floating toggle
 bindsym $mod + space focus mode_toggle
 bindsym --release button2 kill
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +1000; pkill -RTMIN+10 i3blocks"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -1000; pkill -RTMIN+10 i3blocks"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+10 i3blocks"
+bindsym XF86MonBrightnessUp exec --no-startup-id "echo $(($(cat /sys/class/backlight/intel_backlight/brightness)+50)) > /sys/class/backlight/intel_backlight/brightness"
+bindsym XF86MonBrightnessDown exec --no-startup-id "echo $(($(cat /sys/class/backlight/intel_backlight/brightness)-50)) > /sys/class/backlight/intel_backlight/brightness"
 
 # WORKSPACES =====================================================================#
 

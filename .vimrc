@@ -47,7 +47,7 @@ endfunction
 "                 ||----w |
 "                 ||     ||
 "
-colorscheme elflord
+colorscheme delek
 syntax enable
 set laststatus=2
 set path=.
