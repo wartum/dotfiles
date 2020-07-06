@@ -1,12 +1,7 @@
-command=/home/wojtek/.local/i3blocks/$BLOCK_NAME
-separator_block_width=15
+command=/home/wojtek/.local/i3blocks/i3_${BLOCK_NAME}
+separator_block_width=30
 markup=none
 align=left
-
-[rss_feeds]
-label= 
-interval=5
-signal=12
 
 [volume]
 instance=Master
@@ -14,48 +9,24 @@ interval=once
 signal=10
 min_width=🔊 100%
 
-[disk]
-label=💾 
-instance=/home/wojtek
-interval=30
-
-[memory]
-label= 
-interval=2
-min_width= 1.00G
-
-[cpu_usage]
-label= 
-interval=10
-min_width=CPU: 1.00%
-
 [temperature]
-label= 
+label= 
 interval=5
 
-[iface]
-label= 
-interval=10
-
 [time]
-label=📆 
-interval=1
+label= 
+interval=2
 
 [battery]
 instance=0
 interval=1
 separator=false
+
 [battery]
 instance=1
 interval=1
-
-[packages]
-label= 
-command=pacman -Q | wc -l
-interval=25
 
 [keyindicator]
 instance=CAPS
 interval=once
 signal=11
-separator=false

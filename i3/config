@@ -1,32 +1,55 @@
 # VARIABLES AND ATTRIBUTES  ======================================================#
 
 set $mod Mod1
-set $term /usr/bin/alacritty
+set $term SHELL=/usr/bin/fish /usr/bin/urxvt
+
+set $bg0h #1d2021
+set $bg0  #282828
+set $bg1  #3c3836
+set $bg2  #504945
+set $bg3  #665c54
+set $bg4  #7c6f64
+
+set $fg0 #fbf1c7
+set $fg1 #ebdbb2
+set $fg2 #d5c4a1
+set $fg3 #bdae93
+set $fg4 #a89984
+
+set $gray   #928374
+set $red    #fb4934
+set $green  #b8bb26
+set $yellow #fabd2f
+set $orange #fe8019
+set $blue   #83a598
+set $purple #d3869b
+set $aqua   #8ec07c
+set $black  #000000
+set $white  #ffffff
 
 workspace_layout default
 default_border pixel 2
+hide_edge_borders smart
 font pango: Noto Serif 11
 focus_follows_mouse no
 title_align center
 floating_modifier $mod
-hide_edge_borders smart
 
 # colors
-# class                 border  backgr. text    indicator child_border
-client.focused          #8700af #00005f #af00ff #aaaaaa   #882288
-client.focused_inactive #333333 #221122 #ffffff #000000   #000000
-client.unfocused        #333333 #000000 #888888 #000000   #000000
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #000000
-client.background       #ffffff
+# class                 border backgr. text indicator child_border
+client.focused          $gray  $bg0    $fg1 $orange   $fg4
+client.focused_inactive $gray  $bg0    $fg1 $black    $bg0h
+client.unfocused        $gray  $bg3    $fg1 $black    $bg0h
+client.urgent           $red   $red    $fg1 $red      $red
+client.placeholder      $black $bg3    $fg1 $black    $bg0h
+client.background       $white
 
 mode "resize" {
     bindsym h resize shrink width 1 px or 1 ppt
-    bindsym k resize grow height 1 px or 1 ppt
     bindsym j resize shrink height 1 px or 1 ppt
+    bindsym k resize grow height 1 px or 1 ppt
     bindsym l resize grow width 1 px or 1 ppt
 
-    # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
@@ -35,23 +58,22 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    font pango: JetBrains Mono Bold 11
+    font pango: JetBrains Mono Bold 12
     strip_workspace_numbers yes
     position top
     status_command i3blocks
-    tray_padding 1 px
+    tray_padding 0 px
     separator_symbol 
 
     colors {
-        background #000000
-        statusline #af00ff
-        separator #af0087
+        background $bg0h
+        statusline $fg1
+        separator  $fg1
 
-        focused_workspace  #000000 #af00ff #000000
-        active_workspace   #000000 #441144 #b0b0b0
-        inactive_workspace #000000 #441144 #b0b0b0
-        urgent_workspace   #000000 #900000 #ffffff
-        binding_mode       #000000 #900000 #ffffff
+        focused_workspace  $black $fg4 $bg0h
+        active_workspace   $black $bg0 $fg1
+        inactive_workspace $black $bg0 $fg1
+        urgent_workspace   $black $red $bg0h
     }
 }
 
@@ -63,20 +85,20 @@ for_window [class="Gtk-intro"] floating enable
 
 # KEY BINDINGS  #=================================================================#
 
-bindsym Caps_Lock --release exec pkill -RTMIN+11 i3blocks
-bindsym Num_Lock --release exec pkill -RTMIN+11 i3blocks
+bindsym Caps_Lock --release exec --no-startup-id pkill -RTMIN+11 i3blocks
 bindsym $mod + Shift + r restart
 
-bindsym $mod + d                        exec /usr/bin/dmenu_run
-bindsym $mod + a                        exec ~/Bin/emoji_picker.sh
+bindsym $mod + Return                   exec --no-startup-id $term
+bindsym $mod + n                        exec --no-startup-id $term -e ranger
+bindsym $mod + d                        exec --no-startup-id /usr/bin/dmenu_run
 bindsym $mod + p                        exec /usr/bin/thunderbird
 bindsym $mod + m                        exec /usr/bin/firefox
-bindsym $mod + Return                   exec $term
-bindsym $mod + n                        exec $term -e ranger
-bindsym $mod + s                        exec ~/Bin/make_screenshot.sh
+bindsym $mod + a                        exec ~/Bin/emoji_picker.sh
+bindsym $mod + s                        exec --no-startup-id /usr/bin/scrot -u -e 'mv $f ~/Pictures/screenshots && notify-send "Screenshot saved"'
 bindsym $mod + y                        exec ~/Bin/yt_download_from_selection.sh
 bindsym $mod + Shift + x                exec ~/Bin/shutdown_menu.sh
-bindsym $mod + Shift + c                exec /usr/bin/i3lock -i Pictures/wallpapers/tiger1.png -t
+bindsym --release $mod + c              exec /usr/local/bin/slock
+bindsym --release $mod + Shift + s      exec --no-startup-id /usr/bin/scrot -s -e 'xclip -selection c -t image/png < $f && mv $f ~/Pictures/screenshots'
 
 bindsym $mod + h focus left
 bindsym $mod + j focus down
@@ -89,16 +111,18 @@ bindsym $mod + Shift + l move right
 
 bindsym $mod + Shift + w kill
 
-bindsym $mod + f fullscreen toggle
+bindsym $mod + Shift + f fullscreen toggle
 bindsym $mod + w layout tabbed
 bindsym $mod + e layout toggle split
 bindsym $mod + v split toggle
 
 bindsym $mod + Shift + space floating toggle
 bindsym $mod + space focus mode_toggle
+
 bindsym --release button2 kill
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +1000; pkill -RTMIN+10 i3blocks"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -1000; pkill -RTMIN+10 i3blocks"
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master 2.5%+; pkill -RTMIN+10 i3blocks"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q sset Master 2.5%-; pkill -RTMIN+10 i3blocks"
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+10 i3blocks"
 bindsym XF86MonBrightnessUp exec --no-startup-id "echo $(($(cat /sys/class/backlight/intel_backlight/brightness)+50)) > /sys/class/backlight/intel_backlight/brightness"
 bindsym XF86MonBrightnessDown exec --no-startup-id "echo $(($(cat /sys/class/backlight/intel_backlight/brightness)-50)) > /sys/class/backlight/intel_backlight/brightness"
@@ -110,41 +134,28 @@ set $ws2 "2:II"
 set $ws3 "3:III"
 set $ws4 "4:IV"
 set $ws5 "5:V"
-set $ws6 "6:VI"
-set $ws7 "7:VII"
-set $ws8 "8:VIII"
-set $ws9 "9:IX"
-set $ws10 "10:X"
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
 
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
 
 workspace $ws2 output DP2-3
 workspace $ws1 output eDP1
 
 # Autostart  =====================================================================#
 
-exec nm-applet
-exec dropbox
-exec blueman-applet
-exec systemctl --user start org.freedesktop.Notifications
-exec systemctl --user start newsboat-reloader
+exec --no-startup-id auto_refresh_display.sh
+exec --no-startup-id nm-applet
+exec --no-startup-id dropbox
+exec --no-startup-id blueman-applet
+exec --no-startup-id systemctl --user start org.freedesktop.Notifications
+
+# vim:filetype=i3

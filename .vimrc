@@ -1,32 +1,26 @@
-"  _______________________________________
-" < I'm just Vundle config, don't mind me >
-"  ---------------------------------------
-"         \   ^__^
-"          \  (oo)\_______
-"             (__)\       )\/\
-"                 ||----w |
-"                 ||     ||
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"==========<VUNDLE>===============================
+set nocompatible
+filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'itchyny/lightline.vim'
+Plugin 'PotatoesMaster/i3-vim-syntax'
+Plugin 'luochen1990/rainbow'
+Plugin 'lervag/vimtex'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'morhetz/gruvbox'
 "Plugin 'ycm-core/YouCompleteMe'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" ____________________________
-"< Let's have some functions! >
-" ----------------------------
-"        \   ^__^
-"         \  (oo)\_______
-"            (__)\       )\/\
-"                ||----w |
-"                ||     ||
-"
+let g:rainbow_active = 1
+
+"==========<FUNCTIONS>============================
 function! ToggleWhiteCharacters()
    if (&list)
     :set nolist
@@ -36,19 +30,15 @@ function! ToggleWhiteCharacters()
     echo "list on"
   endif
 endfunction
-"
-"  ___________________________________
-" / Much power you wield once vim you \
-" \ master                            /
-"  -----------------------------------
-"         \   ^__^
-"          \  (@@)\_______
-"             (__)\       )\/\
-"                 ||----w |
-"                 ||     ||
-"
-colorscheme delek
+
+"==========<VIM CORE>=============================
+
+set background=dark
+let g:gruvbox_contrast_dark = 'high'
+colorscheme gruvbox
 syntax enable
+set incsearch
+set colorcolumn=0
 set laststatus=2
 set path=.
 set tags=./tags;/
@@ -65,35 +55,46 @@ set hlsearch
 
 set tabstop=4 shiftwidth=4
 "2 spaces indent
-set expandtab shiftwidth=2 softtabstop=2
+"set expandtab shiftwidth=2 softtabstop=2
 
+if has("gui_running")
+  set go-=T
+  set go-=r
+  set go-=m
+  set guifont=JetBrains\ Mono\ NL\ 12
+endif
 
-" insert key bindings "
-inoremap jj <Esc>
+inoremap jk <Esc>
 inoremap {{ {}<Left><CR><CR><Up><Tab>
-inoremap // /* <End> */<Left><Left><Left>
 inoremap <C-v> <C-r>+
 
-" normal key bindings "
 nnoremap <Space> :w<CR>
-nnoremap <C-j> :tabp<CR>
-nnoremap <C-k> :tabn<CR>
 nnoremap Q :NERDTreeToggle<CR>
 nnoremap S :call ToggleWhiteCharacters()<CR>
 nnoremap <C-w>- :sp<CR>
 nnoremap <C-w>/ :vs<CR>
 nnoremap <C-w>_ :ter<CR>
 nnoremap <C-w>? :vert ter<CR>
+nnoremap <Left> <C-w><
+nnoremap <Right> <C-w>>
+nnoremap <Down> <C-w>+
+nnoremap <Up> <C-w>-
 nnoremap ZQ :q!<CR>
 nnoremap ZZ :wq<CR>
-nnoremap > <C-w>>
-nnoremap < <C-w><
 
-" visual key bindings "
 vnoremap <C-c> "+y
 
-" autocommands "
+autocmd VimEnter * set textwidth=0
+autocmd VimEnter * highlight MatchParen cterm=none ctermbg=magenta ctermfg=white
 autocmd BufWritePost .Xresources call system("xrdb ~/.Xresources")
 autocmd BufWritePost .xbindkeysrc call system("pkill xbindkeys; xbindkeys")
 autocmd BufWritePost picom.conf call system("systemctl --user restart compton")
-autocmd BufWritePost *.tex call system("pdflatex ".expand("%"))
+
+"==========<PYTHON FILES>=========================
+autocmd BufRead *.py let python_highlight_all = 1
+autocmd BufRead *.py set colorcolumn=110
+
+"==========<C/C++ FILES>==========================
+autocmd BufRead *.c set colorcolumn=110
+autocmd BufRead *.cpp set colorcolumn=110
+

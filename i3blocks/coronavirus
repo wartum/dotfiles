@@ -1,8 +1,0 @@
-#!/bin/sh
-output=$(curl -s https://corona-stats.online/pl \
-  | awk -F'│' 'NR==4 {print $6"/"$4"/"$5}' \
-  | sed 's/\s//g' \
-  | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g")
-
-  [ -n "$output" ] && echo "$output" > ~/.cache/corona && echo "$output" \
-  || cat ~/.cache/corona
