@@ -1,4 +1,4 @@
 source ~/.bashrc
 [ -f ~/.Xresources ] && xrdb ~/.Xresources
-~/Bin/refresh_display.sh
-exec i3
+# ~/Bin/refresh_display.sh
+# exec i3

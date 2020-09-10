@@ -55,13 +55,14 @@ set hlsearch
 
 set tabstop=4 shiftwidth=4
 "2 spaces indent
-"set expandtab shiftwidth=2 softtabstop=2
+" set expandtab shiftwidth=2 softtabstop=2
 
 if has("gui_running")
   set go-=T
   set go-=r
   set go-=m
   set guifont=JetBrains\ Mono\ NL\ 12
+  set lines=999 columns=999
 endif
 
 inoremap jk <Esc>
@@ -96,5 +97,7 @@ autocmd BufRead *.py set colorcolumn=110
 
 "==========<C/C++ FILES>==========================
 autocmd BufRead *.c set colorcolumn=110
+autocmd BufRead *.h set colorcolumn=110
 autocmd BufRead *.cpp set colorcolumn=110
+autocmd BufRead *.hpp set colorcolumn=110
 

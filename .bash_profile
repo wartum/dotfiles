@@ -5,5 +5,6 @@ export EDITOR=vim
 export DMENU_STD_THEME=
 export LESSHISTFILE=/dev/null
 export XDG_CONFIG_HOME=/home/wojtek/.config
+export XDG_TEMPLATES_DIR=/home/wojtek/Templates
+
 source ~/.bashrc
-export QT_QPA_PLATFORMTHEME=gtk2

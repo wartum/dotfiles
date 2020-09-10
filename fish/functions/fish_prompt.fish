@@ -1,3 +1,7 @@
 function fish_prompt
-	echo " :: "
+	if [ $NNNLVL=1 ]
+		echo '(nnn)=> '
+	else
+		echo ' => '
+	end
 end

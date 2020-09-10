@@ -1,7 +1,11 @@
-command=/home/wojtek/.local/i3blocks/i3_${BLOCK_NAME}
-separator_block_width=30
+command=/home/wojtek/.config/i3blocks/i3_${BLOCK_NAME}
+separator_block_width=45
 markup=none
 align=left
+
+[time]
+label= 
+interval=2
 
 [volume]
 instance=Master
@@ -13,18 +17,14 @@ min_width=🔊 100%
 label= 
 interval=5
 
-[time]
-label= 
-interval=2
-
 [battery]
 instance=0
-interval=1
+interval=3
 separator=false
 
 [battery]
 instance=1
-interval=1
+interval=3
 
 [keyindicator]
 instance=CAPS
