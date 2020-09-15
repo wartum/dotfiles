@@ -78,8 +78,8 @@ nnoremap <C-w>_ :ter<CR>
 nnoremap <C-w>? :vert ter<CR>
 nnoremap <Left> <C-w><
 nnoremap <Right> <C-w>>
-nnoremap <Down> <C-w>+
-nnoremap <Up> <C-w>-
+nnoremap <Down> <C-w>-
+nnoremap <Up> <C-w>+
 nnoremap ZQ :q!<CR>
 nnoremap ZZ :wq<CR>
 
