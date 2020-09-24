@@ -190,7 +190,7 @@ animation-discharging-framerate = 750
 type = internal/battery
 battery = BAT1
 adapter = AC
-full-at = 89
+full-at = 81
 
 format-charging = <animation-charging> <label-charging>
 format-discharging = <animation-discharging> <label-discharging>
