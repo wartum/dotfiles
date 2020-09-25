@@ -16,3 +16,8 @@ alias rr 'R --no-save <'
 [ $TERM = linux ] && setfont /usr/share/kbd/consolefonts/eurlatgr.psfu.gz
 set EDITOR vim
 set PAGER less
+set LESSHISTFILE -
+set XDG_CONFIG_HOME /home/wojtek/.config
+set XDG_CACHE_HOME /home/wojtek/.cache
+set XDG_DATA_HOME /home/wojtek/.local/share
+set XDG_TEMPLATES_DIR /home/wojtek/Templates
