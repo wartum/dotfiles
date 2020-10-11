@@ -32,10 +32,9 @@ default_border pixel 2
 hide_edge_borders smart
 font pango: Noto Serif 11
 focus_follows_mouse no
+focus_on_window_activation none
 title_align center
 floating_modifier $mod
-gaps inner 15
-gaps outer 10
 
 mode "resize" {
     bindsym h resize shrink width 1 px or 1 ppt
@@ -54,18 +53,14 @@ for_window [class="Blueman-manager"]          floating enable
 for_window [class="Pavucontrol"]              floating enable
 for_window [class="Matplotlib"]               floating enable
 for_window [class="Nm-connection-editor"]     floating enable
-for_window [class="VirtualBox Manager"]       floating enable
-for_window [class="Test-app"]                 floating enable
-for_window [class="Mojosetup"]                floating enable
-for_window [class="explorer.exe"]             floating enable
 
 # window colors
 # class                 border backgr. text indicator child_border
 client.focused          $gray  $bg0    $fg1 $orange   $fg4
-client.focused_inactive $gray  $bg0    $fg1 $black    $bg0h
-client.unfocused        $gray  $bg3    $fg1 $black    $bg0h
+client.focused_inactive $gray  $bg0    $fg1 $bg0h     $bg0h
+client.unfocused        $gray  $bg3    $fg1 $bg0h     $bg0h
 client.urgent           $red   $red    $fg1 $red      $red
-client.placeholder      $black $bg3    $fg1 $black    $bg0h
+client.placeholder      $bg0h  $bg3    $fg1 $bg0h     $bg0h
 client.background       $white
 # KEY BINDINGS  #=================================================================#
 
@@ -138,11 +133,9 @@ workspace $ws1 output eDP1
 
 exec --no-startup-id pkill .*auto_refresh.*;auto_refresh_display.sh
 exec --no-startup-id nm-applet
-exec --no-startup-id dropbox
 exec --no-startup-id blueman-applet
 exec --no-startup-id udiskie -A -t
 exec --no-startup-id systemctl --user start org.freedesktop.Notifications
-exec --no-startup-id systemctl --user start compton
 exec --no-startup-id /usr/bin/calcurse --daemon
 exec --no-startup-id /home/wojtek/Bin/launch_polybar.sh
 

@@ -100,4 +100,3 @@ autocmd BufRead *.c set colorcolumn=110
 autocmd BufRead *.h set colorcolumn=110
 autocmd BufRead *.cpp set colorcolumn=110
 autocmd BufRead *.hpp set colorcolumn=110
-
