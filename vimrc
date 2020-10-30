@@ -9,7 +9,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'itchyny/lightline.vim'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'luochen1990/rainbow'
-Plugin 'lervag/vimtex'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'michaeljsmith/vim-indent-object'
@@ -92,11 +91,11 @@ autocmd BufWritePost .xbindkeysrc call system("pkill xbindkeys; xbindkeys")
 autocmd BufWritePost picom.conf call system("systemctl --user restart compton")
 
 "==========<PYTHON FILES>=========================
-autocmd BufRead *.py let python_highlight_all = 1
-autocmd BufRead *.py set colorcolumn=110
+" autocmd BufRead *.py let python_highlight_all = 1
+" autocmd BufRead *.py set colorcolumn=110
 
 "==========<C/C++ FILES>==========================
-autocmd BufRead *.c set colorcolumn=110
-autocmd BufRead *.h set colorcolumn=110
-autocmd BufRead *.cpp set colorcolumn=110
-autocmd BufRead *.hpp set colorcolumn=110
+" autocmd BufRead *.c set colorcolumn=110
+" autocmd BufRead *.h set colorcolumn=110
+" autocmd BufRead *.cpp set colorcolumn=110
+" autocmd BufRead *.hpp set colorcolumn=110

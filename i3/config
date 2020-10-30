@@ -71,7 +71,7 @@ bindsym $mod + Shift + r                restart
 bindsym $mod + Shift + x                exec ~/Bin/shutdown_menu.sh
 
 bindsym $mod + Return                   exec --no-startup-id $term
-bindsym $mod + e                        exec --no-startup-id st -e /usr/bin/ranger
+bindsym $mod + e                        exec --no-startup-id thunar
 bindsym $mod + d                        exec --no-startup-id /usr/bin/dmenu_run
 bindsym $mod + m                        exec /usr/bin/thunderbird
 bindsym $mod + w                        exec /usr/bin/firefox
@@ -97,8 +97,6 @@ bindsym $mod + i                        layout tabbed
 bindsym $mod + p                        layout toggle split
 bindsym $mod + u                        split vertical
 bindsym $mod + o                        split horizontal
-
-bindsym $mod + g                        gaps inner all toggle 15; gaps outer all toggle 10; exec --no-startup-id toggle_picom.sh
 
 bindsym XF86AudioRaiseVolume            exec --no-startup-id "amixer -q sset Master 2.5%+; pkill -RTMIN+10 i3blocks"
 bindsym XF86AudioLowerVolume            exec --no-startup-id "amixer -q sset Master 2.5%-; pkill -RTMIN+10 i3blocks"

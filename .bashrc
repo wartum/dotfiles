@@ -4,6 +4,7 @@
 alias ls='ls --color=auto'
 alias ll='ls -l --color=auto'
 alias cp='cp -v'
+alias mv='mv -v'
 alias r='ranger'
 alias vrc='vim ~/.vim/vimrc'
 alias brc='vim ~/.bashrc'
