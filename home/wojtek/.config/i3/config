@@ -71,7 +71,7 @@ bindsym $mod + Shift + r                restart
 bindsym $mod + Shift + x                exec ~/Bin/shutdown_menu.sh
 
 bindsym $mod + Return                   exec --no-startup-id $term
-bindsym $mod + e                        exec --no-startup-id thunar
+bindsym $mod + e                        exec --no-startup-id $term -e ranger
 bindsym $mod + d                        exec --no-startup-id /usr/bin/dmenu_run
 bindsym $mod + m                        exec /usr/bin/thunderbird
 bindsym $mod + w                        exec /usr/bin/firefox
