@@ -1,0 +1,2 @@
+#!/bin/sh
+dmenu -i -fn "JetBrains Mono-15" -nb "#1d2021" -nf "#edbdb2" -sb "#3c3836" -sf "#edbdb2" "$@"

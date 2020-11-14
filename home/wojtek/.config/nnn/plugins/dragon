@@ -1,4 +1,0 @@
-#!/bin/sh -x
-
-/usr/bin/dragon-drag-and-drop \
-$(awk 'BEGIN {RS="\0"; FS=":"} {print $1}' ~/.config/nnn/.selection | sed "s,\s,\\\ ,g")
