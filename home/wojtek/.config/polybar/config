@@ -57,7 +57,7 @@ font-2 = Siji:Regular:pixelsize=11;1
 
 modules-left = i3
 modules-center = date
-modules-right = xbacklight alsa temperature battery0 battery1
+modules-right = alsa memory temperature battery0 battery1
 
 tray-position = right
 tray-padding = 2
@@ -103,6 +103,19 @@ label-urgent-padding = 2
 ; Separator in between workspaces
 ; label-separator = |
 
+[module/memory]
+type = internal/memory
+interval = 3
+format = RAM <bar-used>
+bar-used-indicator =
+bar-used-width = 10
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -211,18 +224,15 @@ animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 750
 
 [module/temperature]
-interval=5
+interval=3
 type = internal/temperature
 thermal-zone = 1
 warn-temperature = 70
+label =  %temperature-c%
 
-format = <label>
-format-warn =  <label-warn>
-format-warn-underline = #fb4934
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+label-warn =  %temperature-c%
+label-warn-foreground = #fabd2f
+format-warn = <label-warn>
 
 [settings]
 screenchange-reload = true
