@@ -1,11 +1,15 @@
 command=/home/wojtek/.config/i3blocks/i3_${BLOCK_NAME}
-separator_block_width=45
+separator_block_width=30
 markup=none
 align=left
 
 [time]
-label= 
+format=+[%d %B %Y] {%H:%M}
 interval=2
+
+[rss_feeds]
+label= 
+interval=10
 
 [volume]
 instance=Master
@@ -17,13 +21,11 @@ min_width=🔊 100%
 label= 
 interval=5
 
-[battery]
-instance=0
+[memory]
+label= 
 interval=3
-separator=false
 
 [battery]
-instance=1
 interval=3
 
 [keyindicator]

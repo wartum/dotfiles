@@ -36,19 +36,6 @@ focus_on_window_activation none
 title_align center
 floating_modifier $mod
 
-mode "resize" {
-    bindsym h resize shrink width 1 px or 1 ppt
-    bindsym j resize shrink height 1 px or 1 ppt
-    bindsym k resize grow height 1 px or 1 ppt
-    bindsym l resize grow width 1 px or 1 ppt
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
-    bindsym f mode "default"
-}
-bindsym $mod + r mode "resize"
-
 for_window [class="Blueman-manager"]          floating enable
 for_window [class="Pavucontrol"]              floating enable
 for_window [class="Matplotlib"]               floating enable
@@ -62,6 +49,25 @@ client.unfocused        $gray  $bg3    $fg1 $bg0h     $bg0h
 client.urgent           $red   $red    $fg1 $red      $red
 client.placeholder      $bg0h  $bg3    $fg1 $bg0h     $bg0h
 client.background       $white
+
+bar {
+    font pango: JetBrains Mono Bold 10
+    strip_workspace_numbers yes
+    position top
+    status_command i3blocks
+    tray_padding 0 px
+
+    colors {
+        background $bg0h
+        statusline $fg1
+        separator  $bg2
+
+        focused_workspace  $black $fg4 $bg0h
+        active_workspace   $black $bg0 $fg1
+        inactive_workspace $black $bg0 $fg1
+        urgent_workspace   $black $red $bg0h
+    }
+}
 # KEY BINDINGS  #=================================================================#
 
 bindsym Caps_Lock --release             exec --no-startup-id pkill -RTMIN+11 i3blocks
@@ -78,7 +84,7 @@ bindsym $mod + w                        exec /usr/bin/firefox
 bindsym --release $mod + c              exec /usr/bin/slock
 
 bindsym $mod + s                        exec --no-startup-id /usr/bin/scrot -u -e 'mv $f ~/Pictures/screenshots && notify-send "Screenshot saved"'
-bindsym --release $mod + Shift + s      exec --no-startup-id /usr/bin/scrot -s -e 'xclip -selection c -t image/png < $f && mv $f ~/Pictures/screenshots'
+bindsym --release $mod + Shift + s      exec --no-startup-id /usr/bin/scrot -s -e 'xclip -selection c -t image/png < $f && mv $f ~/Pictures/screenshots && notify-send "Screeshot saved"'
 
 bindsym $mod + h                        focus left
 bindsym $mod + j                        focus down
@@ -103,6 +109,19 @@ bindsym XF86AudioLowerVolume            exec --no-startup-id "amixer -q sset Mas
 bindsym XF86AudioMute                   exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+10 i3blocks"
 bindsym XF86MonBrightnessUp             exec --no-startup-id "echo $(($(cat /sys/class/backlight/intel_backlight/brightness)+50)) > /sys/class/backlight/intel_backlight/brightness"
 bindsym XF86MonBrightnessDown           exec --no-startup-id "echo $(($(cat /sys/class/backlight/intel_backlight/brightness)-50)) > /sys/class/backlight/intel_backlight/brightness"
+
+mode "resize" {
+    bindsym h resize shrink width 1 px or 1 ppt
+    bindsym j resize shrink height 1 px or 1 ppt
+    bindsym k resize grow height 1 px or 1 ppt
+    bindsym l resize grow width 1 px or 1 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+    bindsym f mode "default"
+}
+bindsym $mod + r mode "resize"
 
 # WORKSPACES =====================================================================#
 
@@ -134,7 +153,5 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id udiskie -A -t
 exec --no-startup-id systemctl --user start org.freedesktop.Notifications
-exec --no-startup-id /usr/bin/calcurse --daemon
-exec --no-startup-id /home/wojtek/Bin/launch_polybar.sh
 
 # vim:filetype=i3

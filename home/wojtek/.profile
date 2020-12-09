@@ -1,4 +1,4 @@
-export PATH=$PATH:/home/wojtek/Bin
+export PATH=$PATH:/home/wojtek/Bin:/usr/local/lib
 export LC_ALL="en_US.UTF-8"
 export PRINTER=J4120DW
 export EDITOR=vim

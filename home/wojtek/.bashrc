@@ -14,6 +14,7 @@ alias gts='git status'
 alias gtc='git checkout'
 alias d='devour'
 alias tv='devour firefox https://tvonline.vectra.pl/home?channel=tvn24-bis-hd && exit'
+alias sent='devour sent'
 alias pi='ssh pi@192.168.0.38 -o ConnectTimeout=2'
 
 [ $TERM = linux ] && setfont /usr/share/kbd/consolefonts/eurlatgr.psfu.gz

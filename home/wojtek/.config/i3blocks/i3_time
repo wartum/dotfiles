@@ -1,5 +1,3 @@
 #!/bin/sh
-case $BLOCK_BUTTON in
-  1) i3-msg exec "st -e calcurse" > /dev/null
-esac
-date '+%H:%M %d %B %Y'
+[ $BLOCK_BUTTON = 1 ] && i3-msg exec "zenity --calendar" > /dev/null
+date "$format"

@@ -1,0 +1,11 @@
+awk '
+  /MemTotal/ {total = $2}
+  /MemAvailable/ {available = $2}
+  END {
+    used = total-available
+	used_percentage = (used/total)*100
+	for (i=1; i<(used_percentage/5); ++i) printf "▮"
+	for (i=used_percentage/5; i<20; ++i) printf "▯"
+	print""
+  }
+  ' /proc/meminfo
