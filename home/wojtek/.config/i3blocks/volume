@@ -61,10 +61,12 @@ format() {
     echo 🔊 "$OUTPUT"
   elif [ "${OUTPUT%*%}" -gt 35 ]; then
     echo 🔉 "$OUTPUT"
-  elif [ "$OUTPUT" != 🔇 ]; then
-    echo 🔈 "$OUTPUT"
+  elif [ "${OUTPUT%*%}" -eq 0 ]; then
+    echo 🔇 "$OUTPUT"
+  elif [ "$OUTPUT" = "MUTE" ]; then
+    echo 🔇 "$OUTPUT"
   fi
-  echo "$OUTPUT"
+  echo 🔈 "$OUTPUT"
 }
 
 #------------------------------------------------------------------------

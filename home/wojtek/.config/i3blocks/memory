@@ -1,0 +1,14 @@
+awk -v max=$length '
+  /MemTotal/ {total = $2}
+  /MemAvailable/ {available = $2}
+  END {
+    factor = 100/max
+
+    used = total-available
+    used = int(((used/total)*100)/factor)
+
+    for (i=0; i<used; ++i) printf "▮"
+    for (i=used; i<max; ++i) printf "▯"
+    print""
+  }
+  ' /proc/meminfo

@@ -1,7 +1,0 @@
-#!/bin/sh
-case $BLOCK_BUTTON in
-  1) /usr/bin/alacritty -e newsboat > /dev/null;;
-esac
-
-pgrep newsboat > /dev/null && cat ~/.cache/newsboat && exit 0
-newsboat -x print-unread | cut -d' ' -f1 | tee ~/.cache/newsboat

@@ -19,3 +19,4 @@ alias pi='ssh pi@192.168.0.38 -o ConnectTimeout=2'
 
 [ $TERM = linux ] && setfont /usr/share/kbd/consolefonts/eurlatgr.psfu.gz
 PS1=' => '
+neofetch

@@ -1,8 +1,0 @@
-#!/bin/sh
-i=0
-out=""
-while [ "$i" -lt "$count" ]; do
-  out="$out "
-  i=$((i+1))
-done
-echo "$out"

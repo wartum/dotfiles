@@ -1,11 +1,11 @@
-command=/home/wojtek/.config/i3blocks/i3_${BLOCK_NAME}
+command=/home/wojtek/.config/i3blocks/${BLOCK_NAME}
 separator_block_width=30
 markup=none
 align=left
 
 [time]
-format=+[%d %B %Y] {%H:%M}
-interval=2
+format=+%d %B %Y %H:%M
+interval=5
 
 [rss_feeds]
 label= 
@@ -23,6 +23,7 @@ interval=5
 
 [memory]
 label= 
+length=20
 interval=3
 
 [battery]

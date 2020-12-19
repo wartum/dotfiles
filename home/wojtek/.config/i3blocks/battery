@@ -1,0 +1,38 @@
+#!/bin/sh
+
+acpi -b | awk '
+    BEGIN {
+        average = 0
+        warning = 40
+        critical = 20
+    }
+
+    {
+        sub(/,/, "", $4)
+        sub(/%/, "", $4)
+        sub(/,/, "", $3)
+
+        value = int($4)
+        average += value
+        state = $3
+        if (state == "Charging") { symbol = "" }
+        else
+        {
+            if      (value > 75) { symbol = "" }
+            else if (value > 50) { symbol = "" }
+            else if (value > 25) { symbol = "" }
+            else if (value > 5)  { symbol = "" }
+            else                 { symbol = "" }
+        }
+
+        printf "%s %d%%", symbol, value
+        if(NR<2) printf "  "
+    }
+
+    END {
+        average /= 2
+        color = "#ebdbb2"
+        if      (average <= critical) color="#fb4934"
+        else if (average <= warning)  color="#fabd2f"
+        printf "\n\n%s\n", color
+    }'
