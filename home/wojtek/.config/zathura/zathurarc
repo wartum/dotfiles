@@ -1,13 +1,13 @@
 set default-bg "#1d2021"
-set default-fg "#ebdbb2"
+set default-fg "#a89984"
 set inputbar-bg "#282828"
-set inputbar-fg "#ebdbb2"
+set inputbar-fg "#a89984"
 set statusbar-bg "#282828"
-set statusbar-fg "#ebdbb2"
+set statusbar-fg "#a89984"
 set notification-bg "#282828"
-set notification-fg "#ebdbb2"
+set notification-fg "#a89984"
 set recolor-lightcolor "#282828"
-set recolor-darkcolor "#ebdbb2"
+set recolor-darkcolor "#a89984"
 set recolor-reverse-video true
 set recolor true
 
