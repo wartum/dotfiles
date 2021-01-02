@@ -78,13 +78,14 @@ bindsym $mod + Shift + x                exec ~/Bin/shutdown_menu.sh
 
 bindsym $mod + Return                   exec --no-startup-id $term
 bindsym $mod + e                        exec --no-startup-id $term -e ranger
+bindsym $mod + y                        exec --no-startup-id $term -e ~/Bin/yt.sh
 bindsym $mod + d                        exec --no-startup-id /usr/bin/dmenu_run
 bindsym $mod + m                        exec /usr/bin/thunderbird
 bindsym $mod + w                        exec /usr/bin/firefox
 bindsym --release $mod + c              exec /usr/bin/slock
 
-bindsym $mod + s                        exec --no-startup-id /usr/bin/scrot -u -e 'mv $f ~/Pictures/screenshots && notify-send "Screenshot saved"'
-bindsym --release $mod + Shift + s      exec --no-startup-id /usr/bin/scrot -s -e 'xclip -selection c -t image/png < $f && mv $f ~/Pictures/screenshots && notify-send "Screeshot saved"'
+bindsym $mod + s                        exec --no-startup-id /usr/bin/scrot -u -e 'xclip -selection c -t image/png < $f && mv $f ~/Pictures/screenshots && notify-send "Screenshot saved"'
+bindsym --release $mod + Shift + s      exec --no-startup-id /usr/bin/scrot -s -e 'xclip -selection c -t image/png < $f && mv $f ~/Pictures/screenshots && notify-send "Screenshot saved"'
 
 bindsym $mod + h                        focus left
 bindsym $mod + j                        focus down
@@ -153,5 +154,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id udiskie -A -t
 exec --no-startup-id systemctl --user start org.freedesktop.Notifications
+exec --no-startup-id pkill .*battery_sound.*;~/.config/i3blocks/battery_sound_indicator
 
 # vim:filetype=i3

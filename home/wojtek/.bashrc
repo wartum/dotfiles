@@ -2,7 +2,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-alias ll='ls -l --color=auto'
+alias ll='ls -1 --color=auto'
 alias cp='cp -v'
 alias mv='mv -v'
 alias r='ranger'
@@ -16,6 +16,8 @@ alias d='devour'
 alias tv='devour firefox https://tvonline.vectra.pl/home?channel=tvn24-bis-hd && exit'
 alias sent='devour sent'
 alias pi='ssh pi@192.168.0.38 -o ConnectTimeout=2'
+alias comdate='git commit -m \""$(date)"\"'
+alias push='git push origin master'
 
 [ $TERM = linux ] && setfont /usr/share/kbd/consolefonts/eurlatgr.psfu.gz
 PS1=' => '

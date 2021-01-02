@@ -4,7 +4,7 @@ acpi -b | awk '
     BEGIN {
         average = 0
         warning = 40
-        critical = 20
+        critical = 12
     }
 
     {
