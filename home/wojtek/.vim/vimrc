@@ -4,37 +4,41 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'itchyny/lightline.vim'
-Plugin 'PotatoesMaster/i3-vim-syntax'
-Plugin 'luochen1990/rainbow'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'morhetz/gruvbox'
-"Plugin 'ycm-core/YouCompleteMe'
-call vundle#end()            " required
+  Plugin 'VundleVim/Vundle.vim'
+  Plugin 'scrooloose/nerdtree'
+  Plugin 'itchyny/lightline.vim'
+  Plugin 'PotatoesMaster/i3-vim-syntax'
+  Plugin 'luochen1990/rainbow'
+  Plugin 'tpope/vim-surround'
+  Plugin 'tpope/vim-commentary'
+  Plugin 'michaeljsmith/vim-indent-object'
+  Plugin 'morhetz/gruvbox'
+call vundle#end()
 filetype plugin indent on    " required
 
 let g:rainbow_active = 1
-
 "==========<FUNCTIONS>============================
 function! ToggleWhiteCharacters()
-   if (&list)
+  if (&list)
     :set nolist
-    echo "list off"
+    echo "White characters display toggled off"
   else
     :set list
-    echo "list on"
+    echo "White characters display toggled on"
   endif
 endfunction
 
+function! ToggleIndendation()
+  if (&expandtab)
+    :set noexpandtab tabstop=8 shiftwidth=8 softtabstop=0
+    :echo "Hard tabs are on"
+  else
+    :set expandtab shiftwidth=2 softtabstop=2
+    :echo "Spaces are on"
+  endif
+endfunction
 "==========<VIM CORE>=============================
-
-set background=dark
-let g:gruvbox_contrast_dark = 'high'
-colorscheme gruvbox
+colorscheme default
 syntax enable
 set incsearch
 set colorcolumn=0
@@ -51,17 +55,17 @@ set splitbelow
 set splitright
 set wildmenu
 set hlsearch
-
-set tabstop=4 shiftwidth=4
-"2 spaces indent
-" set expandtab shiftwidth=2 softtabstop=2
+set tabstop=8 shiftwidth=8
 
 if has("gui_running")
   set go-=T
   set go-=r
   set go-=m
-  set guifont=JetBrains\ Mono\ NL\ 12
-  set lines=999 columns=999
+  set guifont=JetBrains\ Mono\ NL\ 11
+  set lines=30 columns=120
+  set background=dark
+  let g:gruvbox_contrast_dark = 'high'
+  colorscheme gruvbox
 endif
 
 inoremap jk <Esc>
@@ -71,8 +75,9 @@ inoremap <C-v> <C-r>+
 nnoremap <Space> :w<CR>
 nnoremap Q :NERDTreeToggle<CR>
 nnoremap S :call ToggleWhiteCharacters()<CR>
+nnoremap ~ :call ToggleIndendation()<CR>
 nnoremap <C-w>- :sp<CR>
-nnoremap <C-w>/ :vs<CR>
+nnoremap <C-W>/ :vs<CR>
 nnoremap <C-w>_ :ter<CR>
 nnoremap <C-w>? :vert ter<CR>
 nnoremap <Left> <C-w><
@@ -90,12 +95,15 @@ autocmd BufWritePost .Xresources call system("xrdb ~/.Xresources")
 autocmd BufWritePost .xbindkeysrc call system("pkill xbindkeys; xbindkeys")
 autocmd BufWritePost picom.conf call system("systemctl --user restart compton")
 
-"==========<PYTHON FILES>=========================
-" autocmd BufRead *.py let python_highlight_all = 1
-" autocmd BufRead *.py set colorcolumn=110
+"==========<PYTHON FILES>============================
+autocmd BufRead *.py let python_highlight_all = 1
+autocmd BufRead *.py set colorcolumn=110
 
-"==========<C/C++ FILES>==========================
-" autocmd BufRead *.c set colorcolumn=110
-" autocmd BufRead *.h set colorcolumn=110
-" autocmd BufRead *.cpp set colorcolumn=110
-" autocmd BufRead *.hpp set colorcolumn=110
+"==========<C/C++ FILES>=============================
+autocmd BufRead *.c set colorcolumn=110
+autocmd BufRead *.h set colorcolumn=110
+autocmd BufRead *.cpp set colorcolumn=110
+autocmd BufRead *.hpp set colorcolumn=110
+"==========<SONGBOOK FILES>==========================
+autocmd BufRead *.lyr set scrollbind
+autocmd BufRead *.ch set scrollbind

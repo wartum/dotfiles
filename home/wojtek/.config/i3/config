@@ -1,4 +1,4 @@
-# VARIABLES AND ATTRIBUTES  ======================================================#
+# VARIABLES AND ATTRIBUTES ======================================================#
 
 set $mod Mod4
 set $term SHELL=/usr/bin/bash /usr/bin/st
@@ -30,7 +30,7 @@ set $white  #ffffff
 workspace_layout default
 default_border pixel 2
 hide_edge_borders smart
-font pango: Noto Serif 11
+font pango: Noto Sarif 10
 focus_follows_mouse no
 focus_on_window_activation none
 title_align center
@@ -40,6 +40,7 @@ for_window [class="Blueman-manager"]          floating enable
 for_window [class="Pavucontrol"]              floating enable
 for_window [class="Matplotlib"]               floating enable
 for_window [class="Nm-connection-editor"]     floating enable
+for_window [title="^Radio Live.*"]            floating enable, resize set 600 400 px
 
 # window colors
 # class                 border backgr. text indicator child_border
@@ -62,10 +63,11 @@ bar {
         statusline $fg1
         separator  $bg2
 
-        focused_workspace  $black $fg4 $bg0h
-        active_workspace   $black $bg0 $fg1
-        inactive_workspace $black $bg0 $fg1
-        urgent_workspace   $black $red $bg0h
+#       class              border   background   text
+        focused_workspace  $black   $fg4         $bg0h
+        active_workspace   $black   $bg0         $fg1
+        inactive_workspace $black   $bg0         $fg1
+        urgent_workspace   $black   $red         $bg0h
     }
 }
 # KEY BINDINGS  #=================================================================#
@@ -78,7 +80,6 @@ bindsym $mod + Shift + x                exec ~/Bin/shutdown_menu.sh
 
 bindsym $mod + Return                   exec --no-startup-id $term
 bindsym $mod + e                        exec --no-startup-id $term -e ranger
-bindsym $mod + y                        exec --no-startup-id $term -e ~/Bin/yt.sh
 bindsym $mod + d                        exec --no-startup-id /usr/bin/dmenu_run
 bindsym $mod + m                        exec /usr/bin/thunderbird
 bindsym $mod + w                        exec /usr/bin/firefox
@@ -147,13 +148,15 @@ bindsym $mod+Shift+5                    move container to workspace $ws5
 workspace $ws2 output DP2-3
 workspace $ws1 output eDP1
 
-# Autostart  =====================================================================#
+# Autostart =====================================================================#
 
 exec --no-startup-id pkill .*auto_refresh.*;auto_refresh_display.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id udiskie -A -t
-exec --no-startup-id systemctl --user start org.freedesktop.Notifications
+exec --no-startup-id unclutter
 exec --no-startup-id pkill .*battery_sound.*;~/.config/i3blocks/battery_sound_indicator
+exec --no-startup-id systemctl --user start org.freedesktop.Notifications
+exec --no-startup-id systemctl start newsboat-reloader.timer --user
 
 # vim:filetype=i3
