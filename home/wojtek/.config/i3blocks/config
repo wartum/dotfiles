@@ -3,10 +3,6 @@ separator_block_width=30
 markup=none
 align=left
 
-[time]
-format=+%d %B %Y %H:%M
-interval=5
-
 [rss_feeds]
 label= 
 interval=10
@@ -28,6 +24,10 @@ interval=3
 
 [battery]
 interval=3
+
+[time]
+format=+%d %B %Y %H:%M
+interval=5
 
 [keyindicator]
 instance=CAPS

@@ -73,7 +73,7 @@ inoremap {{ {}<Left><CR><CR><Up><Tab>
 inoremap <C-v> <C-r>+
 
 nnoremap <Space> :w<CR>
-nnoremap Q :NERDTreeToggle<CR>
+nnoremap Q :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>
 nnoremap S :call ToggleWhiteCharacters()<CR>
 nnoremap ~ :call ToggleIndendation()<CR>
 nnoremap <C-w>- :sp<CR>

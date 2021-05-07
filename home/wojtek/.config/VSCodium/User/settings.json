@@ -1,3 +1,49 @@
 {
-    "workbench.startupEditor": "newUntitledFile"
+    "git.enabled": false,
+
+    "window.menuBarVisibility": "toggle",
+    "window.zoomLevel": 0,
+    "breadcrumbs.enabled": false,
+    "editor.minimap.enabled": false,
+    "editor.lineNumbers": "relative",
+    "editor.renderWhitespace": "all",
+    "workbench.colorTheme": "GNOME dark",
+    "workbench.activityBar.visible": false,
+    "workbench.list.automaticKeyboardNavigation": false,
+    "workbench.list.keyboardNavigation": "filter",
+    "workbench.sideBar.location": "left",
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.startupEditor": "newUntitledFile",
+    "explorer.openEditors.visible": 0,
+
+    "vim.hlsearch": true,
+
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<Space>"],
+            "commands": [":w"]
+        },
+        {
+            "before": ["<C-w>", "/"],
+            "after": ["<C-w>", "v"],
+        },
+        {
+            "before": ["<C-w>", "-"],
+            "after": ["<C-w>", "s"],
+        },
+        {
+            "before": ["J"],
+            "commands": [":tabprev"],
+        },
+        {
+            "before": ["K"],
+            "commands": [":tabnext"],
+        },
+    ],
 }
