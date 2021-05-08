@@ -49,17 +49,12 @@ safepipe() { "$@"; test $? = 0 -o $? = 141; }
 # Image previews, if enabled in ranger.
 if [ "$preview_images" = "True" ]; then
     case "$mimetype" in
-        # Image previews for SVG files, disabled by default.
-        ###image/svg+xml)
-        ###   convert "$path" "$cached" && exit 6 || exit 1;;
-        # Image previews for image files. w3mimgdisplay will be called for all
-        # image files (unless overriden as above), but might fail for
-        # unsupported types.
+        image/svg+xml)
+           convert "$path" "$cached" && exit 6 || exit 1;;
         image/*)
             exit 7;;
-        # Image preview for video, disabled by default.:
-        ###video/*)
-        ###    ffmpegthumbnailer -i "$path" -o "$cached" -s 0 && exit 6 || exit 1;;
+        video/*)
+            ffmpegthumbnailer -i "$path" -o "$cached" -s 0 && exit 6 || exit 1;;
     esac
 fi
 
@@ -67,9 +62,6 @@ case "$extension" in
     # Archive extensions:
     a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|\
     rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z)
-        try als "$path" && { dump | trim; exit 0; }
-        try acat "$path" && { dump | trim; exit 3; }
-        try bsdtar -lf "$path" && { dump | trim; exit 0; }
         try tar -tf "$path" && { dump | trim; exit 0; }
         exit 1;;
     rar)
@@ -94,7 +86,6 @@ case "$extension" in
     htm|html|xhtml)
         try w3m    -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         try lynx   -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
-        try elinks -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         ;; # fall back to highlight/cat if the text browsers fail
     json)
         if [ "$(tput colors)" -ge 256 ]; then

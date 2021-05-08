@@ -86,6 +86,7 @@ nnoremap <Down> <C-w>-
 nnoremap <Up> <C-w>+
 nnoremap ZQ :q!<CR>
 nnoremap ZZ :wq<CR>
+nnoremap <C-c> /oooooooooo<CR>i<Esc>
 
 vnoremap <C-c> "+y
 
