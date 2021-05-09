@@ -1,7 +1,7 @@
 # VARIABLES AND ATTRIBUTES ======================================================#
 
 set $mod Mod4
-set $term SHELL=/usr/bin/bash /usr/bin/st
+set $term SHELL=/usr/bin/bash /usr/bin/kitty
 
 set $bg0h #1d2021
 set $bg0  #282828
