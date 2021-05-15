@@ -1,7 +1,7 @@
 # VARIABLES AND ATTRIBUTES ======================================================#
 
 set $mod Mod4
-set $term SHELL=/usr/bin/bash /usr/bin/kitty
+set $term SHELL=/usr/bin/bash /usr/bin/st
 
 set $bg0h #1d2021
 set $bg0  #282828
@@ -81,7 +81,7 @@ bindsym $mod + Shift + x                exec ~/Bin/shutdown_menu.sh
 bindsym $mod + Return                   exec --no-startup-id $term
 bindsym $mod + e                        exec --no-startup-id $term -e ranger
 bindsym $mod + d                        exec --no-startup-id /usr/bin/dmenu_run
-bindsym $mod + a                        exec --no-startup-id $term -e ~/Bin/editconf.sh
+bindsym $mod + a                        exec --no-startup-id ~/Bin/editconf.sh
 bindsym $mod + m                        exec /usr/bin/thunderbird
 bindsym $mod + w                        exec /usr/bin/firefox
 bindsym --release $mod + c              exec /usr/bin/slock
