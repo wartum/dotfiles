@@ -1,6 +1,3 @@
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
 alias ls='ls --color=auto'
 alias ll='ls -1 --color=auto'
 alias cp='cp -v'
@@ -24,4 +21,7 @@ alias mem='ps axu --sort=-%mem | awk '"'"'NR < 12 {print $2"\t"$4"\t"$11" "$12" 
 alias cpu='ps axu --sort=-%cpu | awk '"'"'NR < 12 {print $2"\t"$3"\t"$11" "$12" "$13" "$14" "$15}'"'"''
 
 [ $TERM = linux ] && setfont /usr/share/kbd/consolefonts/eurlatgr.psfu.gz
+
+[[ $- != *i* ]] && return
+# Command for interactive mode only
 PS1=' => '

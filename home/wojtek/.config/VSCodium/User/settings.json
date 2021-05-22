@@ -3,7 +3,7 @@
     "window.menuBarVisibility": "hidden",
     "window.zoomLevel": 0,
     "breadcrumbs.enabled": false,
-    "editor.minimap.enabled": true,
+    "editor.minimap.enabled": false,
     "editor.lineNumbers": "relative",
     "editor.renderWhitespace": "all",
     "workbench.colorTheme": "Gruvbox Dark Hard",

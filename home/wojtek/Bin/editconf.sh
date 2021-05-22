@@ -15,4 +15,4 @@ CFGS="${CFGS}\n${HOME}/.Xresources                 Xresources"
 
 CFG_NAME=$(echo ${CFGS} | awk  '{print $2}' | custom_dmenu -l 15)
 [ -z $CFG_NAME ] && exit 0
-st -e vim $(echo $CFGS | grep $CFG_NAME | awk '{print $1}')
+gvim $(echo $CFGS | grep $CFG_NAME | awk '{print $1}')

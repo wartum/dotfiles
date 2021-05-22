@@ -1,6 +1,6 @@
 #!/bin/sh
 case $BLOCK_BUTTON in
-  1) /usr/bin/kitty -e newsboat > /dev/null;;
+  1) /usr/bin/st -e newsboat > /dev/null;;
 esac
 
 pgrep newsboat > /dev/null && cat ~/.cache/newsboat && exit 0
