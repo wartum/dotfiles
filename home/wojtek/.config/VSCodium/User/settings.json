@@ -6,6 +6,7 @@
     "editor.minimap.enabled": false,
     "editor.lineNumbers": "relative",
     "editor.renderWhitespace": "all",
+    "editor.fontSize": 13,
     "workbench.colorTheme": "Gruvbox Dark Hard",
     "workbench.activityBar.visible": false,
     "workbench.list.automaticKeyboardNavigation": false,
@@ -16,6 +17,7 @@
     "explorer.openEditors.visible": 0,
 
     "vim.hlsearch": true,
+    "vim.useSystemClipboard": true,
 
     "vim.insertModeKeyBindings": [
         {

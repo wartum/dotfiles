@@ -6,7 +6,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   Plugin 'VundleVim/Vundle.vim'
   Plugin 'scrooloose/nerdtree'
-  Plugin 'ryanoasis/vim-devicons'
+  " Plugin 'ryanoasis/vim-devicons'
   Plugin 'itchyny/lightline.vim'
   Plugin 'PotatoesMaster/i3-vim-syntax'
   Plugin 'luochen1990/rainbow'
@@ -80,6 +80,7 @@ endif
 inoremap jk <Esc>
 inoremap {{ {}<Left><CR><CR><Up><Tab>
 inoremap <C-v> <C-r>+
+imap <C-d> jkddi
 
 nnoremap <Space> :w<CR>
 nnoremap Q :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>
@@ -93,6 +94,7 @@ nnoremap <Left> <C-w><
 nnoremap <Right> <C-w>>
 nnoremap <Down> <C-w>-
 nnoremap <Up> <C-w>+
+nnoremap <C-w><Enter> :vsplit $MYVIMRC<CR>
 nnoremap ZQ :q!<CR>
 nnoremap ZZ :wq<CR>
 nnoremap <S-F10> :!cmake ..;cmake --build .<CR>
@@ -111,8 +113,8 @@ autocmd BufRead *.cpp set colorcolumn=110
 autocmd BufRead *.hpp set colorcolumn=110
 "==========<RUST FILES>==============================
 autocmd BufRead *.rs set colorcolumn=110
-autocmd BufRead *.rs nnoremap <S-F9> :!cargo run<CR>
-autocmd BufRead *.rs nnoremap <S-F10> :!cargo build<CR>
+autocmd BufRead *.rs nnoremap <buffer> <S-F9> :!cargo run<CR>
+autocmd BufRead *.rs nnoremap <buffer> <S-F10> :!cargo build<CR>
 "==========<SONGBOOK FILES>==========================
 autocmd BufRead *.lyr set scrollbind
 autocmd BufRead *.ch set scrollbind
