@@ -5,7 +5,11 @@ previous_status=""
 current_status=""
 while true; do
 	current_status=$(./battery | awk 'NR==3{print}')
-	[ "$current_status" = "#fb4934" ] && [ "$previous_status" != "$current_status" ] && mpv "$HOME/.local/sounds/Heart Rate Monitor.ogg"
+
+	[ "$current_status" = "#fb4934" ] \
+	&& [ "$previous_status" != "$current_status" ] \
+	&& mpv "$HOME/.local/sounds/Heart Rate Monitor.ogg"
+
 	previous_status="$current_status"
 	sleep 10
 done

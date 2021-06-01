@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh
 
 if [ $(xrandr | grep -c ' connected') = 1 ]
 then

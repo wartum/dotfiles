@@ -17,6 +17,7 @@ alias push='git push origin master'
 alias bc='bc -q'
 alias wnet='firefox https://wnet.fm/wp-content/themes/wnet/player.php'
 alias getaudio='youtube-dl -f bestaudio -o "%(title)s.%(ext)s"'
+alias newsboat='newsboat; pkill -RTMIN+12 i3blocks'
 alias mem='ps axu --sort=-%mem | awk '"'"'NR < 12 {print $2"\t"$4"\t"$11" "$12" "$13" "$14" "$15}'"'"''
 alias cpu='ps axu --sort=-%cpu | awk '"'"'NR < 12 {print $2"\t"$3"\t"$11" "$12" "$13" "$14" "$15}'"'"''
 

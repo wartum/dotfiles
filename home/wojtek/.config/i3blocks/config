@@ -6,10 +6,11 @@ align=left
 [rss_feeds]
 label= 
 interval=10
+signal=12
 
 [volume]
 instance=Master
-interval=once
+interval=10
 signal=10
 min_width=🔊 100%
 

@@ -74,7 +74,7 @@ if has("gui_running")
   set go-=r
   set go-=m
   set guifont=JetBrains\ Mono\ NL\ 10
-  set lines=30 columns=120
+  set lines=45 columns=150
 endif
 
 inoremap jk <Esc>
