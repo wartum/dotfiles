@@ -1,3 +1,5 @@
+#!/bin/sh
+
 awk -v max=$length '
   /MemTotal/ {total = $2}
   /MemAvailable/ {available = $2}

@@ -1,21 +1,19 @@
 # VARIABLES AND ATTRIBUTES ======================================================#
 
 set $mod Mod4
-set $term SHELL=/usr/bin/bash /usr/bin/st
+set $term /usr/bin/st
 
-set $bg0h #1d2021
-set $bg0  #282828
-set $bg1  #3c3836
-set $bg2  #504945
-set $bg3  #665c54
-set $bg4  #7c6f64
-
-set $fg0 #fbf1c7
-set $fg1 #ebdbb2
-set $fg2 #d5c4a1
-set $fg3 #bdae93
-set $fg4 #a89984
-
+set $bg0h   #1d2021
+set $bg0    #282828
+set $bg1    #3c3836
+set $bg2    #504945
+set $bg3    #665c54
+set $bg4    #7c6f64
+set $fg0    #fbf1c7
+set $fg1    #ebdbb2
+set $fg2    #d5c4a1
+set $fg3    #bdae93
+set $fg4    #a89984
 set $gray   #928374
 set $red    #fb4934
 set $green  #b8bb26
@@ -38,7 +36,6 @@ floating_modifier $mod
 
 for_window [class="Blueman-manager"]          floating enable
 for_window [class="Pavucontrol"]              floating enable
-for_window [class="Matplotlib"]               floating enable
 for_window [class="Nm-connection-editor"]     floating enable
 
 # window colors -----------------------------------------------------\
@@ -56,62 +53,66 @@ bar {
     strip_workspace_numbers yes
     position top
     status_command i3blocks
-    tray_padding 0 px
+    tray_padding 1 px
 
+# status bar colors -------------------------------------------------\
     colors {
         background $bg0h
         statusline $fg1
         separator  $bg2
+# -------------------------------------------------------------------/
 
+# workspace indicator colors ----------------------------------------\
 #       class              border   background   text
         focused_workspace  $black   $fg4         $bg0h
         active_workspace   $black   $bg0         $fg1
         inactive_workspace $black   $bg0         $fg1
         urgent_workspace   $black   $red         $bg0h
     }
+# -------------------------------------------------------------------/
 }
 # KEY BINDINGS  #=================================================================#
 
-bindsym Caps_Lock --release             exec --no-startup-id pkill -RTMIN+11 i3blocks
-bindsym $mod + q                        kill
+bindsym Caps_Lock --release        exec --no-startup-id pkill -RTMIN+11 i3blocks
+bindsym $mod + q                   kill
 
-bindsym $mod + Shift + r                restart
-bindsym $mod + Shift + x                exec ~/Bin/shutdown_menu.sh
+bindsym $mod + Shift + r           restart
+bindsym $mod + Shift + q           exec ~/Bin/shutdown_menu.sh
 
-bindsym $mod + Return                   exec --no-startup-id $term
-bindsym $mod + e                        exec --no-startup-id $term -e ranger
-bindsym $mod + d                        exec --no-startup-id /usr/bin/dmenu_run
-bindsym $mod + a                        exec --no-startup-id ~/Bin/editconf.sh
-bindsym $mod + m                        exec /usr/bin/thunderbird
-bindsym $mod + w                        exec /usr/bin/firefox
-bindsym --release $mod + c              exec /usr/bin/slock
+bindsym $mod + Return              exec --no-startup-id $term
+bindsym $mod + e                   exec --no-startup-id $term -e ranger
+bindsym $mod + d                   exec --no-startup-id /usr/bin/dmenu_run
+bindsym $mod + a                   exec --no-startup-id ~/Bin/editconf.sh
+bindsym $mod + m                   exec /usr/bin/thunderbird
+bindsym $mod + w                   exec /usr/bin/brave
+bindsym --release $mod + c         exec /usr/bin/slock
 
-bindsym $mod + s                        exec --no-startup-id /usr/bin/scrot -u -e 'xclip -selection c -t image/png < $f && mv $f ~/Pictures/screenshots && notify-send "Screenshot saved"'
-bindsym --release $mod + Shift + s      exec --no-startup-id /usr/bin/scrot -s -e 'xclip -selection c -t image/png < $f && mv $f ~/Pictures/screenshots && notify-send "Screenshot saved"'
+bindsym $mod + s                   exec --no-startup-id /usr/bin/scrot -u -e 'xclip -selection c -t image/png < $f && mv $f ~/Pictures/screenshots && notify-send "Screenshot saved"'
+bindsym --release $mod + Shift + s exec --no-startup-id /usr/bin/scrot -s -e 'xclip -selection c -t image/png < $f && mv $f ~/Pictures/screenshots && notify-send "Screenshot saved"'
 
-bindsym $mod + h                        focus left
-bindsym $mod + j                        focus down
-bindsym $mod + k                        focus up
-bindsym $mod + l                        focus right
-bindsym $mod + Shift + h                move left
-bindsym $mod + Shift + j                move down
-bindsym $mod + Shift + k                move up
-bindsym $mod + Shift + l                move right
+bindsym $mod + h                   focus left
+bindsym $mod + j                   focus down
+bindsym $mod + k                   focus up
+bindsym $mod + l                   focus right
+bindsym $mod + Shift + h           move left
+bindsym $mod + Shift + j           move down
+bindsym $mod + Shift + k           move up
+bindsym $mod + Shift + l           move right
 
-bindsym $mod + Shift + f                fullscreen toggle
-bindsym $mod + Shift + space            floating toggle
-bindsym $mod + space                    focus mode_toggle
+bindsym $mod + Shift + f           fullscreen toggle
+bindsym $mod + Shift + space       floating toggle
+bindsym $mod + space               focus mode_toggle
 
-bindsym $mod + i                        layout tabbed
-bindsym $mod + p                        layout toggle split
-bindsym $mod + u                        split vertical
-bindsym $mod + o                        split horizontal
+bindsym $mod + i                   layout tabbed
+bindsym $mod + p                   layout toggle split
+bindsym $mod + u                   split vertical
+bindsym $mod + o                   split horizontal
 
-bindsym XF86AudioRaiseVolume            exec --no-startup-id "amixer -q sset Master 2.5%+; pkill -RTMIN+10 i3blocks"
-bindsym XF86AudioLowerVolume            exec --no-startup-id "amixer -q sset Master 2.5%-; pkill -RTMIN+10 i3blocks"
-bindsym XF86AudioMute                   exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+10 i3blocks"
-bindsym XF86MonBrightnessUp             exec --no-startup-id "echo $(($(cat /sys/class/backlight/intel_backlight/brightness)+50)) > /sys/class/backlight/intel_backlight/brightness"
-bindsym XF86MonBrightnessDown           exec --no-startup-id "echo $(($(cat /sys/class/backlight/intel_backlight/brightness)-50)) > /sys/class/backlight/intel_backlight/brightness"
+bindsym XF86AudioRaiseVolume       exec --no-startup-id "amixer -q sset Master 2.5%+; pkill -RTMIN+10 i3blocks"
+bindsym XF86AudioLowerVolume       exec --no-startup-id "amixer -q sset Master 2.5%-; pkill -RTMIN+10 i3blocks"
+bindsym XF86AudioMute              exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+10 i3blocks"
+bindsym XF86MonBrightnessUp        exec --no-startup-id "echo $(($(cat /sys/class/backlight/intel_backlight/brightness)+50)) > /sys/class/backlight/intel_backlight/brightness"
+bindsym XF86MonBrightnessDown      exec --no-startup-id "echo $(($(cat /sys/class/backlight/intel_backlight/brightness)-50)) > /sys/class/backlight/intel_backlight/brightness"
 
 mode "resize" {
     bindsym h resize shrink width 1 px or 1 ppt
@@ -159,7 +160,7 @@ exec --no-startup-id udiskie -A -t
 exec --no-startup-id unclutter
 exec --no-startup-id nextcloud
 exec --no-startup-id systemctl --user start org.freedesktop.Notifications
-exec --no-startup-id systemctl start newsboat-reloader.timer --user
+exec --no-startup-id systemctl --user start newsboat-reloader.timer
 
 exec --no-startup-id ~/Bin/refresh_display.sh
 exec --no-startup-id xrdb ~/.Xresources

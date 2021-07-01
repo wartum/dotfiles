@@ -6,7 +6,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   Plugin 'VundleVim/Vundle.vim'
   Plugin 'scrooloose/nerdtree'
-  " Plugin 'ryanoasis/vim-devicons'
   Plugin 'itchyny/lightline.vim'
   Plugin 'PotatoesMaster/i3-vim-syntax'
   Plugin 'luochen1990/rainbow'
@@ -21,7 +20,10 @@ call vundle#begin()
   Plugin 'vim-scripts/errormarker.vim'
   Plugin 'pboettch/vim-cmake-syntax'
   Plugin 'townk/vim-autoclose'
+  Plugin 'puremourning/vimspector'
+  Plugin 'jauler/vim-auto-gcov-marker'
 call vundle#end()
+let g:vimspector_enable_mappings = 'HUMAN'
 "==========<FUNCTIONS>============================
 function! ToggleWhiteCharacters()
   if (&list)
@@ -118,3 +120,5 @@ autocmd BufRead *.rs nnoremap <buffer> <S-F10> :!cargo build<CR>
 "==========<SONGBOOK FILES>==========================
 autocmd BufRead *.lyr set scrollbind
 autocmd BufRead *.ch set scrollbind
+autocmd BufRead *.lyr set cursorbind
+autocmd BufRead *.ch set cursorbind
