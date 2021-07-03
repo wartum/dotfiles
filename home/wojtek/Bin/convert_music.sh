@@ -1,6 +1,6 @@
 #!/bin/bash
 
-find -L ~/Music \( -iname *.webm -o -iname *.m4a -o -iname *.mp3 -o -iname *.mp4 \) -exec bash -c \
+find -L ~/Music \( -iname *.webm -o -iname *.m4a -o -iname *.mp3 -o -iname *.mp4 -o -iname *.mkv \) -exec bash -c \
 	'
 	ext="${1##*.}"
 	original_name="$1"
